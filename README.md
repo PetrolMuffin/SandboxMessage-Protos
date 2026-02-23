@@ -1,2 +1,3 @@
-# PMessage.Protos
-Proto models for PMessage project
+- Protobuf models for sandbox message app
+- Generated Go package
+- Generated C# package
