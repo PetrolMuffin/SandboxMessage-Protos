@@ -1,0 +1,36 @@
+syntax = "proto3";
+option go_package = "go/rpcusers;rpcusers";
+option csharp_namespace = "SM.Rpc.Users";
+
+package sm.users.v1;
+
+message RegisterRequest {
+    int64 user_id = 1;
+    string username = 2;
+    string email = 3;
+}
+
+message RegisterResponse {
+}
+
+message UpdateUsernameRequest {
+    int64 user_id = 1;
+    string username = 2;
+}
+
+message UpdateUsernameResponse {
+}
+
+message CheckUsernameRequest {
+    string username = 1;
+}
+
+message CheckUsernameResponse {
+    bool exists = 1;
+}
+
+service UsersService {
+    rpc Register(RegisterRequest) returns (RegisterResponse);
+    rpc UpdateUsername(UpdateUsernameRequest) returns (UpdateUsernameResponse);
+    rpc CheckUsername(CheckUsernameRequest) returns (CheckUsernameResponse);
+}

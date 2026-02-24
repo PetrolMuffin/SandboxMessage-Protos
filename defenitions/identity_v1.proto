@@ -1,0 +1,65 @@
+syntax = "proto3";
+option go_package = "go/rpcidentity;rpcidentity";
+option csharp_namespace = "SM.Rpc.Identity";
+
+package sm.identity.v1;
+
+message DeviceInfo {
+    string fingerprint = 1;
+    string info = 2;
+    string os = 3;
+}
+
+message RegisterRequest {
+    string username = 1;
+    bytes password = 2;
+    DeviceInfo device = 3;
+}
+
+message RegisterResponse {
+    uint64 user_id = 1;
+    string access_token = 2;
+    string refresh_token = 3;
+}
+
+message LoginRequest {
+    string username = 1;
+    bytes password = 2;
+    DeviceInfo device = 3;
+}
+
+message LoginResponse {
+    uint64 user_id = 1;
+    string access_token = 2;
+    string refresh_token = 3;
+}
+
+message UpdatePasswordRequest {
+    uint64 user_id = 1;
+    bytes password = 2;
+}
+
+message UpdatePasswordResponse {
+    string access_token = 1;
+    string refresh_token = 2;
+}
+
+service AuthService {
+    rpc Login(LoginRequest) returns (LoginResponse);
+    rpc Register(RegisterRequest) returns (RegisterResponse);
+    rpc UpdatePassword(UpdatePasswordRequest) returns (UpdatePasswordResponse);
+}
+
+message RefreshSessionRequest {
+    string refresh_token = 1;
+    DeviceInfo device = 2;
+}
+
+message RefreshSessionResponse {
+    string access_token = 1;
+    string refresh_token = 2;
+}
+
+service SessionService {
+    rpc RefreshSession(RefreshSessionRequest) returns (RefreshSessionResponse);
+}
