@@ -25,7 +25,6 @@ type RegisterRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	Username      string                 `protobuf:"bytes,2,opt,name=username,proto3" json:"username,omitempty"`
-	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -70,13 +69,6 @@ func (x *RegisterRequest) GetUserId() int64 {
 func (x *RegisterRequest) GetUsername() string {
 	if x != nil {
 		return x.Username
-	}
-	return ""
-}
-
-func (x *RegisterRequest) GetEmail() string {
-	if x != nil {
-		return x.Email
 	}
 	return ""
 }
@@ -297,11 +289,10 @@ var File_defenitions_users_v1_proto protoreflect.FileDescriptor
 
 const file_defenitions_users_v1_proto_rawDesc = "" +
 	"\n" +
-	"\x1adefenitions/users_v1.proto\x12\vsm.users.v1\"\\\n" +
+	"\x1adefenitions/users_v1.proto\x12\vsm.users.v1\"F\n" +
 	"\x0fRegisterRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1a\n" +
-	"\busername\x18\x02 \x01(\tR\busername\x12\x14\n" +
-	"\x05email\x18\x03 \x01(\tR\x05email\"\x12\n" +
+	"\busername\x18\x02 \x01(\tR\busername\"\x12\n" +
 	"\x10RegisterResponse\"L\n" +
 	"\x15UpdateUsernameRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1a\n" +
