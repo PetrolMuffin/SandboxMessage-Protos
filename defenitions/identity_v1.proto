@@ -10,6 +10,11 @@ message DeviceInfo {
     string os = 3;
 }
 
+message TokenPair {
+    string access_token = 1;
+    string refresh_token = 2;
+}
+
 message RegisterRequest {
     string username = 1;
     bytes password = 2;
@@ -18,8 +23,7 @@ message RegisterRequest {
 
 message RegisterResponse {
     uint64 user_id = 1;
-    string access_token = 2;
-    string refresh_token = 3;
+    TokenPair token_pair = 2;
 }
 
 message LoginRequest {
@@ -30,8 +34,7 @@ message LoginRequest {
 
 message LoginResponse {
     uint64 user_id = 1;
-    string access_token = 2;
-    string refresh_token = 3;
+    TokenPair token_pair = 2;
 }
 
 message UpdatePasswordRequest {
@@ -40,8 +43,7 @@ message UpdatePasswordRequest {
 }
 
 message UpdatePasswordResponse {
-    string access_token = 1;
-    string refresh_token = 2;
+    TokenPair token_pair = 1;
 }
 
 service AuthService {
@@ -56,8 +58,7 @@ message RefreshSessionRequest {
 }
 
 message RefreshSessionResponse {
-    string access_token = 1;
-    string refresh_token = 2;
+    TokenPair token_pair = 1;
 }
 
 service SessionService {
