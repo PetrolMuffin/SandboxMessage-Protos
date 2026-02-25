@@ -1,16 +1,6 @@
 syntax = "proto3";
-option go_package = "go/rpcusers;rpcusers";
+option go_package = "go/rpcidentity/identity;rpcidentity";
 option csharp_namespace = "SM.Rpc.Users";
-
-package sm.users.v1;
-
-message RegisterRequest {
-    int64 user_id = 1;
-    string username = 2;
-}
-
-message RegisterResponse {
-}
 
 message UpdateUsernameRequest {
     int64 user_id = 1;
@@ -28,8 +18,15 @@ message CheckUsernameResponse {
     bool exists = 1;
 }
 
-service UsersService {
-    rpc Register(RegisterRequest) returns (RegisterResponse);
+message UpdatePasswordRequest {
+    bytes password = 2;
+}
+
+message UpdatePasswordResponse {
+}
+
+service IdentityService {
     rpc UpdateUsername(UpdateUsernameRequest) returns (UpdateUsernameResponse);
     rpc CheckUsername(CheckUsernameRequest) returns (CheckUsernameResponse);
+    rpc UpdatePassword(UpdatePasswordRequest) returns (UpdatePasswordResponse);
 }
